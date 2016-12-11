@@ -1,3 +1,5 @@
+\chapter{Технологический раздел}
+
 \section{Интеграционное тестирование}
 
 В данной части работы будет осуществлено тестирование модулей сервера, обрабатывающие http запросы, взаимодействующие с базой данных, в которых импортированы модели. 
@@ -35,7 +37,9 @@ router.post('/get', function(req, res, next) {
 module.exports = router;
 \end{lstlisting}
 
-\begin{table}[h] 
+Тесты для модуля \textbf{vuser.js} описаны в таблице \ref{tab:vuserjs}.
+
+\begin{table} 
 \caption{\label{tab:vuserjs}Тестирование модуля vuser.js}
 \begin{center}
 \begin{tabular}{|l|p{10cm}|}
@@ -70,8 +74,10 @@ module.exports = router;
 	\item \textbf{POST /set-info} получает событие, произошедшее в заданном матче с описанием события.
 \end{enumerate}
 
-\begin{table}[h] 
-\caption{\label{tab:vuserjs}Тестирование модуля referee.js}
+Тесты для модуля \textbf{referee.js} описаны в таблице \ref{tab:refereejs}.
+
+\begin{table}
+\caption{\label{tab:refereejs}Тестирование модуля referee.js}
 \begin{center}
 \begin{tabular}{|l|p{10cm}|}
 
