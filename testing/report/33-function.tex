@@ -1,0 +1,135 @@
+\section{Функциональное тестирование}
+
+Функциональные тесты основываются на функциях, выполняемых системой. Как правило, эти функции описываются в требованиях, функциональных спецификациях или в виде случаев использования системы (use cases).
+
+\subsection{Use Cases}
+
+\textbf{Use Case} (вариант использования, ВИ, Прецедент, юскейс) — это сценарная техника описания взаимодействия. С помощью Use Case может быть описано и пользовательское требование, и требование к взаимодействию систем, и описание взаимодействия людей и компаний в реальной жизни. В общем случае, с помощью Use Case может описываться взаимодействие двух или большего количества участников, имеющее конкретную цель. В разработке ПО эту технику часто применяют для проектирования и описания взаимодействия пользователя и системы, поэтому название Use Case часто воспринимает как синоним требования человека-пользователя к решению определенной задачи в системе.
+
+
+Примеры Use Case для тестируемого приложения:
+\begin{enumerate}
+	\item создание пользователем команды
+	\item создание пользователем федерации
+	\item создание пользователем турнира по футболу
+	\item создание пользователем матчей в турнире его федерации
+	\item подача пользователем заявки на участе его команды в турнире 
+\end{enumerate}
+
+\subsection{Use Case создание пользователем команды}
+
+Рассмотрим подробнее use case создание пользователем футбольной команды.
+
+\textbf{Система} - сайт web-приложения
+
+\textbf{Основное действующее лицо} - пользователь-капитан команды
+
+\textbf{Цель} - создать команду
+
+\textbf{Триггер} - пользователь решает создать команду и заходит на главную страницу сайта
+
+\textbf{Результат} - информация о команде сохранена в базе данных, пользователь получил ответ от сервера.
+
+\subsubsection{Основной поток событий}
+\begin{enumerate}
+	\item пользователь заходит на главную страницу сайта
+	\item пользователь авторизуется на сайте через сайт-вконтакте
+	\item пользователь нажимает на кнопку <<создать команду>>
+	\item пользователь заполняет поля <<название команды>> и <<город>>
+	\item пользователь нажимает отправить
+	\item система получает запрос
+	\item система проверяет запрос
+	\item при верном запросе система сохраняет данные в базе
+	\item система посылает ответ пользователю
+\end{enumerate}
+
+\subsection{Автоматизация функционального тестирования}
+
+В связи с большим колличеством usecase и большим колличеством монотонных действий в каждом usecase достаточно распространенной является автоматизация функционального тестирования.
+
+Автоматизация функционального тестирования выполнена с помощью Selenium WebDriver.  
+
+\textbf{Selenium WebDriver} - автоматизирует действия с браузером. Это именно то, что необходимо для тестирования сайта web-приложения. Частым является использование паттерна Page Object при написании тестов с использованием Selenium.
+
+\subsubsection{Тестирование создания команды}
+
+Код теста написан с учетом рассмотренного потока событий данного usecase в листинге \ref{lst:test-create-team}
+
+\begin{lstlisting}[caption={Тестирование use case создание команды}, label={lst:test-create-team}]
+it('create team', function(done) {
+        client.manage().timeouts().implicitlyWait(5000);
+
+        let teamName = 'NAME TEAM1';
+        let teamCity = 'CITY TEAM1';
+
+        vkPage.open()
+            .then(() => {
+                vkPage.auth(secret.emailVk, secret.passVk);
+                mainPage.open(URL);
+                mainPage.auth();
+                mainPage.createTeam(teamName, teamCity);
+                client.quit();
+            })
+            .then(() => {
+                return Team.find({name: teamName}, function (err, team) {
+                    assert.isNull(err);
+                    assert.isNotNull(team);
+                    done();
+                })
+            })
+\end{lstlisting} 
+
+\begin{lstlisting}[caption={Объект mainPage}]
+function mainPage(driver) {
+    let self = this;
+
+    self.driver = driver;
+
+    self.open = function(url) {
+        return self.driver.get(url);
+    };
+
+    self.auth = function() {
+        self.driver.findElement(wd.By.id('vk-auth-btn')).click();
+
+        self.driver.findElements(wd.By.className("button_indent"))
+            .then(arr => {
+                if (arr.length > 0) {
+                    arr[0].click();
+                }
+            });
+    };
+
+    self.createTeam = function(teamName, teamCity) {
+        // var createTeamBtn = self.driver.wait(wd.until.elementLocated(wd.By.id('create-team-btn')), 10000);
+        // createTeamBtn.click();
+        self.driver.findElement(wd.By.id('create-team-btn')).click();
+
+        self.driver.findElement(wd.By.id('team-name')).sendKeys(teamName);
+        self.driver.findElement(wd.By.id('team-city')).sendKeys(teamCity);
+
+        self.driver.findElement(wd.By.id('send-team-btn')).click();
+    }
+
+}
+\end{lstlisting} 
+
+\begin{lstlisting}[caption={Результаты тестирования}]
+ilyaps@debian-ilyaps:~/projects/MyFootballFederation$ npm test
+
+> mff@1.0.0 test /home/ilyaps/projects/MyFootballFederation
+> mocha test/gui/ --no-timeouts
+
+
+запущенная база: mongodb://localhost:27017/football_test
+
+
+Express запущен на http://localhost:8080; нажмите Ctrl+C для завершения.
+  GUI Create team
+    ОК normal create team (21944ms)
+
+
+  1 passing (22s)
+\end{lstlisting} 
+
+
