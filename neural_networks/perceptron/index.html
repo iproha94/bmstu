@@ -1,1 +1,42 @@
- 
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Определение вашего пола</title>
+
+	<script src="src/include.js"></script>
+	<script src="src/determine.js"></script>
+</head>
+<body>
+	<h1>Определение вашего пола по росту и весу</h1>
+
+	<h3>Введите ваши параметры:</h3>
+
+	<label>рост: <input type="text" id="growth" value="180"></label><br />
+	<label>вес: <input type="text" id="weight" value="80"></label><br />
+	
+	<script>
+		let maxIter = 100000;
+		let dimension = 2;
+
+		training(maxIter, dimension);
+
+
+		function run() {
+			let people = {
+				growth: parseInt(document.getElementById('growth').value),
+				weight: parseInt(document.getElementById('weight').value),
+			}
+
+			let result = determine(people);
+
+			console.log(result);
+			document.getElementById('sex').value = result.sex;
+		}
+	</script>
+
+	<hr />
+	<p><button onclick="run()">Запуск</button></p><br />
+
+	<label>ваш пол: <input type="text" id="sex" readonly></label><br />
+</body> 
+</html>
