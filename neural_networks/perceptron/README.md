@@ -1,11 +1,11 @@
 #Персептрон
 
-*Язык:* JavaScript  
+**Язык:** JavaScript  
 
-Определение пола по росту и весу человека.
+Реализован нейрон, определяющий пол по росту и весу человека.
 
-Репозиторий с примером кода на питоне [ссылка](https://github.com/Honghe/perceptron "пример")
+Репозиторий с примером кода на Python [ссылка](https://github.com/Honghe/perceptron "пример")
 
-Теория персептрона Розенблатта [ссылка](http://lcn.epfl.ch/tutorial/english/perceptron/html/learning.html "теория")
+Теория персептрона [ссылка](http://lcn.epfl.ch/tutorial/english/perceptron/html/learning.html "теория")
 
-Обычение происходит на выборке [ссылка](http://www.resepty.ru/interesnoe/199-rost-i-ves-znamenitostej-zvezd-izvestnykh-lyudej.html "рост и вес знаменитостей")
+Обучение происходит на выборке [ссылка](http://www.resepty.ru/interesnoe/199-rost-i-ves-znamenitostej-zvezd-izvestnykh-lyudej.html "рост и вес знаменитостей")
