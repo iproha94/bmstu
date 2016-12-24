@@ -1,3 +1,0 @@
-В терминале установить путь до файлов драйверов
-export PATH=$PATH:/home/ilyaps/learning/selenium_presentation/test/tools
- 

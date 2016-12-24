@@ -74,7 +74,7 @@ function determine(people, maxIter) {
     let sex = perceptron.response([people.growth, people.weight]) == 1 ? 'M' : 'F';
 	
     return {
-		sex: sex,
+		sex
 	}
 }
 
