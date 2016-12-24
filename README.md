@@ -2,6 +2,6 @@
 
 [**Компьютерные сети**](https://github.com/iproha94/bmstu/tree/master/computer_networks)
 
-[**Нейронные сети**](https://github.com/iproha94/bmstu/tree/master/neural_networks/perceptron)
+[**Нейронные сети**](https://github.com/iproha94/bmstu/tree/master/neural_networks)
 
 [**Тестирование**](https://github.com/iproha94/bmstu/tree/master/testing)
