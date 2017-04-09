@@ -1,0 +1,258 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Программное приложение для расчета параметров проекта по методике COCOMO</title>
+</head>
+<body>
+    <h1>Программное приложение для расчета параметров проекта по методике COCOMO</h1>
+
+    <h2>Параметры модели COCOMO</h2>
+
+    <form>
+        <label>Режим модели: </label>
+        <input type="radio" id="mode_usual" name="mode" checked> Обычный
+        <input type="radio" id="mode_intermediate" name="mode"> Промежуточный
+        <input type="radio" id="mode_integrated" name="mode"> Встроенный
+    </form>
+
+    <label>Размер KLOC: <input type="text" id="size" value="55"></label><br />
+
+    <h3>Атрибуты программного продукта</h3>
+    <form>
+        <label>Требуемая надежность: </label>
+        <input type="radio" name="RELY" value=0.75> Очень низкий
+        <input type="radio" name="RELY" value=0.86> Низкий
+        <input type="radio" name="RELY" value=1 checked> Номинальный        
+        <input type="radio" name="RELY" value=1.15> Высокий
+        <input type="radio" name="RELY" value=1.4> Очень высокий
+    </form>
+    <form>
+        <label>Размер базы данных: </label>
+        <input type="radio" name="DATA" value=0.94> Низкий
+        <input type="radio" name="DATA" value=1 checked> Номинальный        
+        <input type="radio" name="DATA" value=1.08> Высокий
+        <input type="radio" name="DATA" value=1.16> Очень высокий
+    </form>
+    <form>
+        <label>Сложность продукта: </label>
+        <input type="radio" name="CPLX" value=0.7> Очень низкий
+        <input type="radio" name="CPLX" value=0.85> Низкий
+        <input type="radio" name="CPLX" value=1 checked> Номинальный        
+        <input type="radio" name="CPLX" value=1.15> Высокий
+        <input type="radio" name="CPLX" value=1.3> Очень высокий
+    </form>
+
+    <h3>Атрибуты компьютера</h3>
+    <form>
+        <label>Ограничение времени выполнения: </label>
+        <input type="radio" name="TIME" value=1 checked> Номинальный        
+        <input type="radio" name="TIME" value=1.11> Высокий
+        <input type="radio" name="TIME" value=1.5> Очень высокий
+    </form>
+    <form>
+        <label>Ограничение объема основной памяти: </label>
+        <input type="radio" name="STOR" value=1 checked> Номинальный        
+        <input type="radio" name="STOR" value=1.06> Высокий
+        <input type="radio" name="STOR" value=1.21> Очень высокий
+    </form>
+    <form>
+        <label>Изменчивость виртуальной машины: </label>
+        <input type="radio" name="VIRT" value=0.87> Низкий
+        <input type="radio" name="VIRT" value=1 checked> Номинальный        
+        <input type="radio" name="VIRT" value=1.15> Высокий
+        <input type="radio" name="VIRT" value=1.3> Очень высокий
+    </form>
+    <form>
+        <label>Время реакции компьютера: </label>
+        <input type="radio" name="TURN" value=0.87> Низкий
+        <input type="radio" name="TURN" value=1 checked> Номинальный        
+        <input type="radio" name="TURN" value=1.07> Высокий
+        <input type="radio" name="TURN" value=1.15> Очень высокий
+    </form>
+
+    <h3>Атрибуты персонала</h3>
+    <form>
+        <label>Способности аналитика: </label>
+        <input type="radio" name="ACAP" value=1.46> Очень низкий
+        <input type="radio" name="ACAP" value=1.19> Низкий
+        <input type="radio" name="ACAP" value=1 checked> Номинальный        
+        <input type="radio" name="ACAP" value=0.86> Высокий
+        <input type="radio" name="ACAP" value=0.71> Очень высокий
+    </form>
+    <form>
+        <label>Знание приложений: </label>
+        <input type="radio" name="AEXP" value=1.29> Очень низкий
+        <input type="radio" name="AEXP" value=1.15> Низкий
+        <input type="radio" name="AEXP" value=1 checked> Номинальный        
+        <input type="radio" name="AEXP" value=0.91> Высокий
+        <input type="radio" name="AEXP" value=0.82> Очень высокий
+    </form>
+    <form>
+        <label>Способности программиста: </label>
+        <input type="radio" name="PCAP" value=1.42> Очень низкий
+        <input type="radio" name="PCAP" value=1.17> Низкий
+        <input type="radio" name="PCAP" value=1 checked> Номинальный        
+        <input type="radio" name="PCAP" value=0.86> Высокий
+        <input type="radio" name="PCAP" value=0.7> Очень высокий
+    </form>
+    <form>
+        <label>Знание виртуальной машины: </label>
+        <input type="radio" name="VEXP" value=1.22> Очень низкий
+        <input type="radio" name="VEXP" value=1.1> Низкий
+        <input type="radio" name="VEXP" value=1 checked> Номинальный        
+        <input type="radio" name="VEXP" value=0.9> Высокий
+    </form>
+    <form>
+        <label>Знание языка программирования: </label>
+        <input type="radio" name="LEXP" value=1.14> Очень низкий
+        <input type="radio" name="LEXP" value=1.07> Низкий
+        <input type="radio" name="LEXP" value=1 checked> Номинальный        
+        <input type="radio" name="LEXP" value=0.95> Высокий
+    </form>
+
+    <h3>Атрибуты проекта</h3>
+    <form>
+        <label>Использование современных методов: </label>
+        <input type="radio" name="MODP" value=1.24> Очень низкий
+        <input type="radio" name="MODP" value=1.1> Низкий
+        <input type="radio" name="MODP" value=1 checked> Номинальный        
+        <input type="radio" name="MODP" value=0.91> Высокий
+        <input type="radio" name="MODP" value=0.82> Очень высокий
+    </form>
+    <form>
+        <label>Использование программных инструментов: </label>
+        <input type="radio" name="TOOL" value=1.24> Очень низкий
+        <input type="radio" name="TOOL" value=1.1> Низкий
+        <input type="radio" name="TOOL" value=1 checked> Номинальный        
+        <input type="radio" name="TOOL" value=0.91> Высокий
+        <input type="radio" name="TOOL" value=0.82> Очень высокий
+    </form>
+    <form>
+        <label>Требуемые сроки разработки: </label>
+        <input type="radio" name="SCED" value=1.23> Очень низкий
+        <input type="radio" name="SCED" value=1.08> Низкий
+        <input type="radio" name="SCED" value=1 checked> Номинальный        
+        <input type="radio" name="SCED" value=1.04> Высокий
+        <input type="radio" name="SCED" value=1.1> Очень высокий
+    </form>
+
+    <script>
+        function getValueRadios(radios) {
+            for (var i = 0, length = radios.length; i < length; i++) {
+                if (radios[i].checked) {
+                    // do whatever you want with the checked radio
+                    return radios[i].value;
+                }
+            }
+
+            return 0;
+        }
+
+
+        function run() {
+            let mode = {
+                work: {},
+                time: {}
+            }
+
+            if (document.getElementById('mode_usual').checked) {
+                mode.work.k = 3.2;
+                mode.work.p = 1.05;
+                mode.time.k = 2.5;
+                mode.time.p = 0.38;
+            } else if (document.getElementById('mode_intermediate').checked) {
+                mode.work.k = 3.02;
+                mode.work.p = 1.12;
+                mode.time.k = 2.5;
+                mode.time.p = 0.35;
+            } else if (document.getElementById('mode_integrated').checked) {
+                mode.work.k = 2.8;
+                mode.work.p = 1.2;
+                mode.time.k = 2.5;
+                mode.time.p = 0.32;
+            }
+
+            let size = parseInt(document.getElementById('size').value)
+
+            let eaf = 1 *
+                getValueRadios(document.getElementsByName('RELY')) * 
+                getValueRadios(document.getElementsByName('DATA')) * 
+                getValueRadios(document.getElementsByName('CPLX')) * 
+                getValueRadios(document.getElementsByName('TIME')) * 
+                getValueRadios(document.getElementsByName('STOR')) * 
+                getValueRadios(document.getElementsByName('VIRT')) * 
+                getValueRadios(document.getElementsByName('TURN')) * 
+                getValueRadios(document.getElementsByName('ACAP')) * 
+                getValueRadios(document.getElementsByName('AEXP')) * 
+                getValueRadios(document.getElementsByName('PCAP')) * 
+                getValueRadios(document.getElementsByName('VEXP')) * 
+                getValueRadios(document.getElementsByName('LEXP')) * 
+                getValueRadios(document.getElementsByName('MODP')) * 
+                getValueRadios(document.getElementsByName('TOOL')) * 
+                getValueRadios(document.getElementsByName('SCED')); 
+
+
+            console.log(mode.work.k, eaf, size, mode.work.p)
+            work = mode.work.k * eaf * Math.pow(size, mode.work.p);
+            time = mode.time.k * Math.pow(work, mode.time.p);
+
+            document.getElementById('work').value = work.toFixed(2);
+            document.getElementById('time').value = time.toFixed(2);
+
+            document.getElementById('work_plan').value = (work * 0.08).toFixed(2);
+            document.getElementById('work_design').value = (work * 0.18).toFixed(2);
+            document.getElementById('work_detaild_design').value = (work * 0.25).toFixed(2);
+            document.getElementById('work_coding').value = (work * 0.26).toFixed(2);
+            document.getElementById('work_test').value = (work * 0.31).toFixed(2);
+
+            document.getElementById('time_plan').value = (time * 0.36).toFixed(2);
+            document.getElementById('time_design').value = (time * 0.36).toFixed(2);
+            document.getElementById('time_detaild_design').value = (time * 0.18).toFixed(2);
+            document.getElementById('time_coding').value = (time * 0.18).toFixed(2);
+            document.getElementById('time_test').value = (time * 0.28).toFixed(2);
+
+            document.getElementById('dec_anal').value = (work * 0.04).toFixed(2);
+            document.getElementById('dec_design').value = (work * 0.12).toFixed(2);
+            document.getElementById('dec_prog').value = (work * 0.44).toFixed(2);
+            document.getElementById('dec_plan').value = (work * 0.06).toFixed(2);
+            document.getElementById('dec_auth').value = (work * 0.14).toFixed(2);
+            document.getElementById('dec_office').value = (work * 0.07).toFixed(2);
+            document.getElementById('dec_conf').value = (work * 0.07).toFixed(2);
+            document.getElementById('dec_manual').value = (work * 0.06).toFixed(2);
+        }
+    </script>
+
+    <hr />
+    <p><button onclick="run()">Запуск</button></p><br />
+
+
+    <h1>Оценка основных работ и сроков</h1>
+    <label>работа (количество человеко-месяцев): <input type="text" id="work" readonly></label><br />
+    <label>время (в месяцах): <input type="text" id="time" readonly></label><br />
+
+    <h1>Распределение работ по стадиям жизненного цикла</h1>
+    <label>+Планирование и определение требований: <input type="text" id="work_plan" readonly></label><br />
+    <label>Проектирование продукта: <input type="text" id="work_design" readonly></label><br />
+    <label>Детальное проектирование: <input type="text" id="work_detaild_design" readonly></label><br />
+    <label>Кодирование и тестирование отдельных модулей: <input type="text" id="work_coding" readonly></label><br />
+    <label>Интеграция и тестирование: <input type="text" id="work_test" readonly></label><br />
+
+    <h1>Распределение времени по стадиям жизненного цикла</h1>
+    <label>+Планирование и определение требований: <input type="text" id="time_plan" readonly></label><br />
+    <label>Проектирование продукта: <input type="text" id="time_design" readonly></label><br />
+    <label>Детальное проектирование: <input type="text" id="time_detaild_design" readonly></label><br />
+    <label>Кодирование и тестирование отдельных модулей: <input type="text" id="time_coding" readonly></label><br />
+    <label>Интеграция и тестирование: <input type="text" id="time_test" readonly></label><br />
+
+    <h1>Декомпозиция работ по созданию ПО</h1>
+    <label>Анализ требований: <input type="text" id="dec_anal" readonly></label><br />
+    <label>Проектирование продукта: <input type="text" id="dec_design" readonly></label><br />
+    <label>Программирование: <input type="text" id="dec_prog" readonly></label><br />
+    <label>Планирование тестирования: <input type="text" id="dec_plan" readonly></label><br />
+    <label>Верификация и аттестация: <input type="text" id="dec_auth" readonly></label><br />
+    <label>Канцелярия проекта: <input type="text" id="dec_office" readonly></label><br />
+    <label>Управление конфигурацией и обеспечение качества: <input type="text" id="dec_conf" readonly></label><br />
+    <label>Создание руководств: <input type="text" id="dec_manual" readonly></label><br />
+
+</body> 
+</html>
